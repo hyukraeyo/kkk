@@ -1,498 +1,921 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>클레임 등록</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-    목적, 고객명, 회사명, 장비, 환경, 개봉상태, 설정 확인, 버전 확인, S/R Probe 확인사항, 시스템 점검, 최종 확인, 비고, 결론 이것들은 셀랙트 박스로 변경해줘
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <h1>등록할 클레임 유형을 선택해주세요</h1>
+      <h1>등록할 클레임 유형을 선택해주세요</h1>
 
-        <div class="section">
-            <div class="radio-group">
-                <div class="radio-option">
-                    <input type="radio" id="report1" name="reportType" value="installation-kr" checked>
-                    <label for="report1">설치 확인서(국문)</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" id="report2" name="reportType" value="pre-installation-kr">
-                    <label for="report2">설치 전 확인서(국문)</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" id="report3" name="reportType" value="installation-en">
-                    <label for="report3">Installation Confimation Report (EN)</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" id="report4" name="reportType" value="pre-service-en">
-                    <label for="report4">Pre-Service Check Report (EN)</label>
-                </div>
-            </div>
+      <div class="section">
+        <div class="radio-group">
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="report1"
+              name="reportType"
+              value="installation-kr"
+              checked
+            />
+            <label for="report1">설치 확인서(국문)</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="report2"
+              name="reportType"
+              value="pre-installation-kr"
+            />
+            <label for="report2">설치 전 확인서(국문)</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="report3"
+              name="reportType"
+              value="installation-en"
+            />
+            <label for="report3">Installation Confimation Report (EN)</label>
+          </div>
+          <div class="radio-option">
+            <input
+              type="radio"
+              id="report4"
+              name="reportType"
+              value="pre-service-en"
+            />
+            <label for="report4">Pre-Service Check Report (EN)</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="목적">목적</option>
+        </select>
+
+        <div class="description">
+          <p>
+            설치 확인서는 신규 장비 설치 또는 이전 후 Installation Qualification
+            (IQ), Operational Qualification (OQ), Performance Qualification
+            (PQ)를 확인하기 위해 사용됩니다. 체크리스트 및 내용 확인이 완료되면
+            해당 장비를 문제없이 사용할 수 있습니다.
+          </p>
+          <p>
+            본 자격 평가의 목적은 STANDARD™ i1000/i2000 장비 설치, 이전 또는
+            수리 시 시스템의 신뢰성 및 효율성을 통한 지속적인 품질 유지
+            확인입니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="고객명">고객명</option>
+        </select>
+
+        <div class="form-group">
+          <label for="organizationName">기관명</label>
+          <input
+            type="text"
+            id="organizationName"
+            name="organizationName"
+            placeholder="COMPANY"
+          />
         </div>
 
-        <div class="section">
-            <h2 class="section-title">목적</h2>
-
-            <div class="description">
-                <p>
-                    설치 확인서는 신규 장비 설치 또는 이전 후 Installation Qualification (IQ), Operational Qualification (OQ), Performance Qualification (PQ)를 확인하기 위해 사용됩니다. 체크리스트 및 내용 확인이 완료되면 해당 장비를 문제없이 사용할 수 있습니다.
-                </p>
-                <p>
-                    본 자격 평가의 목적은 STANDARD™ i1000/i2000 장비 설치, 이전 또는 수리 시 시스템의 신뢰성 및 효율성을 통한 지속적인 품질 유지 확인입니다.
-                </p>
-            </div>
+        <div class="form-group">
+          <label for="userName">사용자명</label>
+          <input type="text" id="userName" name="userName" placeholder="Name" />
         </div>
 
-        <div class="section">
-            <h2 class="section-title">고객명</h2>
+        <div class="form-group">
+          <label for="signature">사용자 서명</label>
+          <div class="signature-area empty" id="signatureArea">
+            <svg
+              class="signature-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 15C3 15 4.5 17 6 17C7.5 17 9 15 9 15M9 15C9 15 10.5 17 12 17C13.5 17 15 15 15 15M15 15C15 15 16.5 17 18 17C19.5 17 21 15 21 15M3 12C3 12 4.5 14 6 14C7.5 14 9 12 9 12M9 12C9 12 10.5 14 12 14C13.5 14 15 12 15 12M15 12C15 12 16.5 14 18 14C19.5 14 21 12 21 12"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span class="signature-text">사용자 서명</span>
+            <canvas class="signature-canvas" id="signatureCanvas"></canvas>
+          </div>
+        </div>
+      </div>
 
-            <div class="form-group">
-                <label for="organizationName">기관명</label>
-                <input type="text" id="organizationName" name="organizationName" placeholder="COMPANY">
-            </div>
+      <!-- 회사 및 엔지니어 정보 -->
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="회사명">회사명</option>
+        </select>
 
-            <div class="form-group">
-                <label for="userName">사용자명</label>
-                <input type="text" id="userName" name="userName" placeholder="Name">
-            </div>
-
-            <div class="form-group">
-                <label for="signature">사용자 서명</label>
-                <div class="signature-area empty" id="signatureArea">
-                    <svg class="signature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 15C3 15 4.5 17 6 17C7.5 17 9 15 9 15M9 15C9 15 10.5 17 12 17C13.5 17 15 15 15 15M15 15C15 15 16.5 17 18 17C19.5 17 21 15 21 15M3 12C3 12 4.5 14 6 14C7.5 14 9 12 9 12M9 12C9 12 10.5 14 12 14C13.5 14 15 12 15 12M15 12C15 12 16.5 14 18 14C19.5 14 21 12 21 12" stroke="#999" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                    <span class="signature-text">사용자 서명</span>
-                    <canvas class="signature-canvas" id="signatureCanvas"></canvas>
-                </div>
-            </div>
+        <div class="form-group">
+          <label for="companyName">회사명</label>
+          <input
+            type="text"
+            id="companyName"
+            name="companyName"
+            placeholder="COMPANY"
+          />
         </div>
 
-        <!-- 회사 및 엔지니어 정보 -->
-        <div class="section">
-            <h2 class="section-title">회사명</h2>
-
-            <div class="form-group">
-                <label for="companyName">회사명</label>
-                <input type="text" id="companyName" name="companyName" placeholder="COMPANY">
-            </div>
-
-            <div class="form-group">
-                <label for="engineerName">엔지니어명</label>
-                <input type="text" id="engineerName" name="engineerName" placeholder="Name">
-            </div>
-
-            <div class="form-group">
-                <label for="engineerSignature">엔지니어 서명</label>
-                <div class="signature-area empty" id="engineerSignatureArea">
-                    <svg class="signature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 15C3 15 4.5 17 6 17C7.5 17 9 15 9 15M9 15C9 15 10.5 17 12 17C13.5 17 15 15 15 15M15 15C15 15 16.5 17 18 17C19.5 17 21 15 21 15M3 12C3 12 4.5 14 6 14C7.5 14 9 12 9 12M9 12C9 12 10.5 14 12 14C13.5 14 15 12 15 12M15 12C15 12 16.5 14 18 14C19.5 14 21 12 21 12" stroke="#999" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                    <span class="signature-text">엔지니어 서명</span>
-                    <canvas class="signature-canvas" id="engineerSignatureCanvas"></canvas>
-                </div>
-            </div>
+        <div class="form-group">
+          <label for="engineerName">엔지니어명</label>
+          <input
+            type="text"
+            id="engineerName"
+            name="engineerName"
+            placeholder="Name"
+          />
         </div>
 
-        <!-- 장비 정보 -->
-        <div class="section">
-            <h2 class="section-title">장비</h2>
+        <div class="form-group">
+          <label for="engineerSignature">엔지니어 서명</label>
+          <div class="signature-area empty" id="engineerSignatureArea">
+            <svg
+              class="signature-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 15C3 15 4.5 17 6 17C7.5 17 9 15 9 15M9 15C9 15 10.5 17 12 17C13.5 17 15 15 15 15M15 15C15 15 16.5 17 18 17C19.5 17 21 15 21 15M3 12C3 12 4.5 14 6 14C7.5 14 9 12 9 12M9 12C9 12 10.5 14 12 14C13.5 14 15 12 15 12M15 12C15 12 16.5 14 18 14C19.5 14 21 12 21 12"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span class="signature-text">엔지니어 서명</span>
+            <canvas
+              class="signature-canvas"
+              id="engineerSignatureCanvas"
+            ></canvas>
+          </div>
+        </div>
+      </div>
 
-            <div class="form-group">
-                <label for="equipmentCompany">Company</label>
-                <div class="equipment-company-wrapper">
-                    <span class="equipment-number">1</span>
-                    <input type="text" id="equipmentCompany" name="equipmentCompany" placeholder="COMPANY">
-                </div>
-            </div>
+      <!-- 장비 정보 -->
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="장비">장비</option>
+        </select>
 
-            <div class="photo-instruction">
-                <p>장비 뒷면에 있는 시리얼번호(S/N)가 표시된 사진을 첨부하세요.</p>
-            </div>
-
-            <div class="form-group">
-                <label for="photoUpload">사진 등록하기</label>
-                <div class="photo-upload-area" id="photoUploadArea">
-                    <svg class="photo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="#999" stroke-width="2"/>
-                        <path d="M9 9C9.55228 9 10 9.44772 10 10C10 10.5523 9.55228 11 9 11C8.44772 11 8 10.5523 8 10C8 9.44772 8.44772 9 9 9Z" fill="#999"/>
-                        <path d="M21 15L16 10L11 15L7 11L3 15V19H21V15Z" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="photo-text">사진 등록하기</span>
-                    <input type="file" id="photoUpload" name="photoUpload" accept="image/*" style="display: none;">
-                </div>
-            </div>
+        <div class="form-group">
+          <label for="equipmentCompany">Company</label>
+          <div class="equipment-company-wrapper">
+            <span class="equipment-number">1</span>
+            <input
+              type="text"
+              id="equipmentCompany"
+              name="equipmentCompany"
+              placeholder="COMPANY"
+            />
+          </div>
         </div>
 
-        <!-- 날짜 정보 -->
-        <div class="section">
-            <div class="form-group">
-                <label for="manufacturingDate">제조일자</label>
-                <div class="date-input-wrapper">
-                    <input type="text" id="manufacturingDate" name="manufacturingDate" placeholder="mm/dd/yyyy" class="date-input">
-                    <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="4" width="18" height="18" rx="2" stroke="#999" stroke-width="2"/>
-                        <line x1="7" y1="2" x2="7" y2="6" stroke="#999" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="17" y1="2" x2="17" y2="6" stroke="#999" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="3" y1="10" x2="21" y2="10" stroke="#999" stroke-width="2"/>
-                    </svg>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="installationDate">설치일자</label>
-                <div class="date-input-wrapper">
-                    <input type="text" id="installationDate" name="installationDate" placeholder="mm/dd/yyyy" class="date-input">
-                    <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="4" width="18" height="18" rx="2" stroke="#999" stroke-width="2"/>
-                        <line x1="7" y1="2" x2="7" y2="6" stroke="#999" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="17" y1="2" x2="17" y2="6" stroke="#999" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="3" y1="10" x2="21" y2="10" stroke="#999" stroke-width="2"/>
-                    </svg>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="creationDate">작성일자</label>
-                <div class="date-input-wrapper">
-                    <input type="text" id="creationDate" name="creationDate" placeholder="mm/dd/yyyy" class="date-input">
-                    <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="4" width="18" height="18" rx="2" stroke="#999" stroke-width="2"/>
-                        <line x1="7" y1="2" x2="7" y2="6" stroke="#999" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="17" y1="2" x2="17" y2="6" stroke="#999" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="3" y1="10" x2="21" y2="10" stroke="#999" stroke-width="2"/>
-                    </svg>
-                </div>
-            </div>
+        <div class="photo-instruction">
+          <p>장비 뒷면에 있는 시리얼번호(S/N)가 표시된 사진을 첨부하세요.</p>
         </div>
 
-        <!-- 환경 -->
-        <div class="section">
-            <h2 class="section-title">환경</h2>
+        <div class="form-group">
+          <label for="photoUpload">사진 등록하기</label>
+          <div class="photo-upload-area" id="photoUploadArea">
+            <svg
+              class="photo-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="2"
+                stroke="#999"
+                stroke-width="2"
+              />
+              <path
+                d="M9 9C9.55228 9 10 9.44772 10 10C10 10.5523 9.55228 11 9 11C8.44772 11 8 10.5523 8 10C8 9.44772 8.44772 9 9 9Z"
+                fill="#999"
+              />
+              <path
+                d="M21 15L16 10L11 15L7 11L3 15V19H21V15Z"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="photo-text">사진 등록하기</span>
+            <input
+              type="file"
+              id="photoUpload"
+              name="photoUpload"
+              accept="image/*"
+              style="display: none"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 날짜 정보 -->
+      <div class="section">
+        <div class="form-group">
+          <label for="manufacturingDate">제조일자</label>
+          <div class="date-input-wrapper">
+            <input
+              type="text"
+              id="manufacturingDate"
+              name="manufacturingDate"
+              placeholder="mm/dd/yyyy"
+              class="date-input"
+            />
+            <svg
+              class="calendar-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="3"
+                y="4"
+                width="18"
+                height="18"
+                rx="2"
+                stroke="#999"
+                stroke-width="2"
+              />
+              <line
+                x1="7"
+                y1="2"
+                x2="7"
+                y2="6"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="17"
+                y1="2"
+                x2="17"
+                y2="6"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="3"
+                y1="10"
+                x2="21"
+                y2="10"
+                stroke="#999"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
         </div>
 
-        <!-- 장소 -->
-        <div class="section">
-            <h2 class="section-title">장소</h2>
-            <div class="description">
-                <p>해당 설치 장소가 (평탄한지, 진동은 없는지, 수평을 유지하는지) 등 수평계를 사용하여 요구 조건을 충족하는지 확인하십시오.</p>
-            </div>
-            <div class="checkbox-group">
-                <label class="checkbox-label checkbox-pass">
-                    <input type="radio" name="locationStatus" value="pass" checked>
-                    <span class="checkbox-text">PASS</span>
-                </label>
-                <label class="checkbox-label checkbox-fail">
-                    <input type="radio" name="locationStatus" value="fail">
-                    <span class="checkbox-text">FAIL</span>
-                </label>
-            </div>
+        <div class="form-group">
+          <label for="installationDate">설치일자</label>
+          <div class="date-input-wrapper">
+            <input
+              type="text"
+              id="installationDate"
+              name="installationDate"
+              placeholder="mm/dd/yyyy"
+              class="date-input"
+            />
+            <svg
+              class="calendar-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="3"
+                y="4"
+                width="18"
+                height="18"
+                rx="2"
+                stroke="#999"
+                stroke-width="2"
+              />
+              <line
+                x1="7"
+                y1="2"
+                x2="7"
+                y2="6"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="17"
+                y1="2"
+                x2="17"
+                y2="6"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="3"
+                y1="10"
+                x2="21"
+                y2="10"
+                stroke="#999"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
         </div>
 
-        <!-- 전원 -->
-        <div class="section">
-            <h2 class="section-title">전원</h2>
-            <div class="description">
-                <p>접지 전압과 접지 저항이 기준치(5V 미만, 100mΩ 미만)를 만족하는지 확인하십시오.</p>
-            </div>
-            <div class="checkbox-group">
-                <label class="checkbox-label checkbox-pass">
-                    <input type="radio" name="powerStatus" value="pass">
-                    <span class="checkbox-text">PASS</span>
-                </label>
-                <label class="checkbox-label checkbox-fail">
-                    <input type="radio" name="powerStatus" value="fail" checked>
-                    <span class="checkbox-text">FAIL</span>
-                </label>
-            </div>
+        <div class="form-group">
+          <label for="creationDate">작성일자</label>
+          <div class="date-input-wrapper">
+            <input
+              type="text"
+              id="creationDate"
+              name="creationDate"
+              placeholder="mm/dd/yyyy"
+              class="date-input"
+            />
+            <svg
+              class="calendar-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="3"
+                y="4"
+                width="18"
+                height="18"
+                rx="2"
+                stroke="#999"
+                stroke-width="2"
+              />
+              <line
+                x1="7"
+                y1="2"
+                x2="7"
+                y2="6"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="17"
+                y1="2"
+                x2="17"
+                y2="6"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="3"
+                y1="10"
+                x2="21"
+                y2="10"
+                stroke="#999"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
         </div>
+      </div>
 
-        <!-- UPS 전원 -->
-        <div class="section">
-            <div class="description">
-                <p>UPS 전원이 설치되어 있는지 확인하십시오.(권장 사항: 2000 VA)</p>
-            </div>
-            <div class="checkbox-group">
-                <label class="checkbox-label checkbox-pass">
-                    <input type="radio" name="upsStatus" value="pass">
-                    <span class="checkbox-text">PASS</span>
-                </label>
-                <label class="checkbox-label checkbox-fail">
-                    <input type="radio" name="upsStatus" value="fail">
-                    <span class="checkbox-text">FAIL</span>
-                </label>
-            </div>
-        </div>
+      <!-- 환경 -->
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="환경">환경</option>
+        </select>
+      </div>
 
-        <!-- 개봉 상태 -->
-        <div class="section">
-            <h2 class="section-title">개봉 상태</h2>
+      <!-- 장소 -->
+      <div class="section">
+        <h2 class="section-title">장소</h2>
+        <div class="description">
+          <p>
+            해당 설치 장소가 (평탄한지, 진동은 없는지, 수평을 유지하는지) 등
+            수평계를 사용하여 요구 조건을 충족하는지 확인하십시오.
+          </p>
         </div>
+        <div class="checkbox-group">
+          <label class="checkbox-label checkbox-pass">
+            <input type="radio" name="locationStatus" value="pass" checked />
+            <span class="checkbox-text">PASS</span>
+          </label>
+          <label class="checkbox-label checkbox-fail">
+            <input type="radio" name="locationStatus" value="fail" />
+            <span class="checkbox-text">FAIL</span>
+          </label>
+        </div>
+      </div>
 
-        <!-- 포장 상태 -->
-        <div class="section">
-            <h2 class="section-title">포장 상태</h2>
-            <div class="description">
-                <p>장비의 포장 상태가 양호한지 확인하십시오. 손상이 있을 경우, 물류팀 또는 제조사에 문의하고 다음 페이지에 사진을 첨부하십시오.</p>
-            </div>
-            <div class="checkbox-group">
-                <label class="checkbox-label checkbox-pass">
-                    <input type="radio" name="packagingStatus" value="pass" checked>
-                    <span class="checkbox-text">PASS</span>
-                </label>
-                <label class="checkbox-label checkbox-fail">
-                    <input type="radio" name="packagingStatus" value="fail">
-                    <span class="checkbox-text">FAIL</span>
-                </label>
-            </div>
+      <!-- 전원 -->
+      <div class="section">
+        <h2 class="section-title">전원</h2>
+        <div class="description">
+          <p>
+            접지 전압과 접지 저항이 기준치(5V 미만, 100mΩ 미만)를 만족하는지
+            확인하십시오.
+          </p>
         </div>
+        <div class="checkbox-group">
+          <label class="checkbox-label checkbox-pass">
+            <input type="radio" name="powerStatus" value="pass" />
+            <span class="checkbox-text">PASS</span>
+          </label>
+          <label class="checkbox-label checkbox-fail">
+            <input type="radio" name="powerStatus" value="fail" checked />
+            <span class="checkbox-text">FAIL</span>
+          </label>
+        </div>
+      </div>
 
-        <!-- 사진 등록 -->
-        <div class="section">
-            <div class="form-group">
-                <label for="statusPhotoUpload">사진 등록하기</label>
-                <div class="photo-upload-area" id="statusPhotoUploadArea">
-                    <svg class="photo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="#999" stroke-width="2"/>
-                        <path d="M9 9C9.55228 9 10 9.44772 10 10C10 10.5523 9.55228 11 9 11C8.44772 11 8 10.5523 8 10C8 9.44772 8.44772 9 9 9Z" fill="#999"/>
-                        <path d="M21 15L16 10L11 15L7 11L3 15V19H21V15Z" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="photo-text">사진 등록하기</span>
-                    <input type="file" id="statusPhotoUpload" name="statusPhotoUpload" accept="image/*" style="display: none;">
-                </div>
-            </div>
+      <!-- UPS 전원 -->
+      <div class="section">
+        <div class="description">
+          <p>UPS 전원이 설치되어 있는지 확인하십시오.(권장 사항: 2000 VA)</p>
         </div>
+        <div class="checkbox-group">
+          <label class="checkbox-label checkbox-pass">
+            <input type="radio" name="upsStatus" value="pass" />
+            <span class="checkbox-text">PASS</span>
+          </label>
+          <label class="checkbox-label checkbox-fail">
+            <input type="radio" name="upsStatus" value="fail" />
+            <span class="checkbox-text">FAIL</span>
+          </label>
+        </div>
+      </div>
 
-        <!-- 설정 확인 -->
-        <div class="section">
-            <h2 class="section-title">설정 확인</h2>
-            <h3 class="subsection-title">시간 설정</h3>
-            <div class="description">
-                <p>현재 국가의 표준시간으로 설정되어 있는지 확인 하십시오.</p>
-                <p class="check-path">확인 경로: [Settings] ► [General] ► [Time] UTC, 날짜, 시간 설정</p>
-            </div>
-            <div class="checkbox-group">
-                <label class="checkbox-label checkbox-pass">
-                    <input type="radio" name="timeSettingStatus" value="pass" checked>
-                    <span class="checkbox-text">PASS</span>
-                </label>
-                <label class="checkbox-label checkbox-fail">
-                    <input type="radio" name="timeSettingStatus" value="fail">
-                    <span class="checkbox-text">FAIL</span>
-                </label>
-            </div>
-        </div>
+      <!-- 개봉 상태 -->
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="개봉상태">개봉상태</option>
+        </select>
+      </div>
 
-        <!-- 버전 확인 -->
-        <div class="section">
-            <h2 class="section-title">버전 확인</h2>
-            <h3 class="subsection-title">시간 설정</h3>
-            <div class="description">
-                <p>현재 국가의 표준시간으로 설정되어 있는지 확인 하십시오.</p>
-                <p class="check-path">확인 경로: [Settings] ► [General] ► [Time] UTC, 날짜, 시간 설정</p>
-            </div>
-            <div class="form-group">
-                <label for="versionPhotoUpload">사진 등록하기</label>
-                <div class="photo-upload-area" id="versionPhotoUploadArea">
-                    <svg class="photo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="#999" stroke-width="2"/>
-                        <path d="M9 9C9.55228 9 10 9.44772 10 10C10 10.5523 9.55228 11 9 11C8.44772 11 8 10.5523 8 10C8 9.44772 8.44772 9 9 9Z" fill="#999"/>
-                        <path d="M21 15L16 10L11 15L7 11L3 15V19H21V15Z" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="photo-text">사진 등록하기</span>
-                    <input type="file" id="versionPhotoUpload" name="versionPhotoUpload" accept="image/*" style="display: none;">
-                </div>
-            </div>
+      <!-- 포장 상태 -->
+      <div class="section">
+        <h2 class="section-title">포장 상태</h2>
+        <div class="description">
+          <p>
+            장비의 포장 상태가 양호한지 확인하십시오. 손상이 있을 경우, 물류팀
+            또는 제조사에 문의하고 다음 페이지에 사진을 첨부하십시오.
+          </p>
         </div>
+        <div class="checkbox-group">
+          <label class="checkbox-label checkbox-pass">
+            <input type="radio" name="packagingStatus" value="pass" checked />
+            <span class="checkbox-text">PASS</span>
+          </label>
+          <label class="checkbox-label checkbox-fail">
+            <input type="radio" name="packagingStatus" value="fail" />
+            <span class="checkbox-text">FAIL</span>
+          </label>
+        </div>
+      </div>
 
-        <!-- S/R Probe 확인사항 -->
-        <div class="section">
-            <h2 class="section-title">S/R Probe 확인사항</h2>
-            <h3 class="subsection-title">S/R Probe 분주 위치 및 높이 확인</h3>
-            <div class="description">
-                <p>I1000 : S/R Probe Debugging을 진행하여 S/R Probe 분주 위치(X2Y7 / X2Y8)의 Position과 높이(Height)를 확인해 주십시오.</p>
-            </div>
-            <div class="checkbox-group checkbox-group-three">
-                <label class="checkbox-label checkbox-pass">
-                    <input type="radio" name="probeStatus" value="pass">
-                    <span class="checkbox-text">PASS</span>
-                </label>
-                <label class="checkbox-label checkbox-fail">
-                    <input type="radio" name="probeStatus" value="fail">
-                    <span class="checkbox-text">FAIL</span>
-                </label>
-                <label class="checkbox-label checkbox-na">
-                    <input type="radio" name="probeStatus" value="na" checked>
-                    <span class="checkbox-text">N/A</span>
-                </label>
-            </div>
+      <!-- 사진 등록 -->
+      <div class="section">
+        <div class="form-group">
+          <label for="statusPhotoUpload">사진 등록하기</label>
+          <div class="photo-upload-area" id="statusPhotoUploadArea">
+            <svg
+              class="photo-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="2"
+                stroke="#999"
+                stroke-width="2"
+              />
+              <path
+                d="M9 9C9.55228 9 10 9.44772 10 10C10 10.5523 9.55228 11 9 11C8.44772 11 8 10.5523 8 10C8 9.44772 8.44772 9 9 9Z"
+                fill="#999"
+              />
+              <path
+                d="M21 15L16 10L11 15L7 11L3 15V19H21V15Z"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="photo-text">사진 등록하기</span>
+            <input
+              type="file"
+              id="statusPhotoUpload"
+              name="statusPhotoUpload"
+              accept="image/*"
+              style="display: none"
+            />
+          </div>
         </div>
+      </div>
 
-        <!-- 시스템 점검 -->
-        <div class="section">
-            <h2 class="section-title">시스템 점검</h2>
-            <h3 class="subsection-title">Liquid Level Detection</h3>
-            <div class="reference-range">
-                <span class="range-label">기준범위</span> : (R) ≤ 0.5
-            </div>
-            <div class="form-group measurement-group">
-                <label class="measurement-label">측정 값</label>
-                <input type="text" id="liquidLevelValue" name="liquidLevelValue" class="measurement-input">
-            </div>
-            <div class="result-section">
-                <label class="result-label">결과</label>
-                <div class="checkbox-group">
-                    <label class="checkbox-label checkbox-pass">
-                        <input type="radio" name="liquidLevelResult" value="pass" checked>
-                        <span class="checkbox-text">PASS</span>
-                    </label>
-                    <label class="checkbox-label checkbox-fail">
-                        <input type="radio" name="liquidLevelResult" value="fail">
-                        <span class="checkbox-text">FAIL</span>
-                    </label>
-                </div>
-            </div>
+      <!-- 설정 확인 -->
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="설정 확인">설정 확인</option>
+        </select>
+        <h3 class="subsection-title">시간 설정</h3>
+        <div class="description">
+          <p>현재 국가의 표준시간으로 설정되어 있는지 확인 하십시오.</p>
+          <p class="check-path">
+            확인 경로: [Settings] ► [General] ► [Time] UTC, 날짜, 시간 설정
+          </p>
         </div>
+        <div class="checkbox-group">
+          <label class="checkbox-label checkbox-pass">
+            <input type="radio" name="timeSettingStatus" value="pass" checked />
+            <span class="checkbox-text">PASS</span>
+          </label>
+          <label class="checkbox-label checkbox-fail">
+            <input type="radio" name="timeSettingStatus" value="fail" />
+            <span class="checkbox-text">FAIL</span>
+          </label>
+        </div>
+      </div>
 
-        <!-- 최종 확인 -->
-        <div class="section">
-            <h2 class="section-title">최종 확인</h2>
-            <h3 class="subsection-title">System Detection 데이터 추출</h3>
-            <div class="description">
-                <p>System Detection이 완료 되면, FAT-32 형식의 USB 내 [SH] [Dianosis] 폴더 경로를 생성합니다. 해당 USB를 장비에 연결하여 System Detection 데이터를 추출합니다.</p>
-                <p class="data-storage-method">※ 데이터 저장 방법:</p>
-                <p class="check-path">USB 연결 ▶ [Maint] ▶ [Common] ▶ [System Detection] ▶ [Result] ▶ 날짜 확인 후 [Export] 선택</p>
-                <p>USB 내, [Dianosis] 폴더에 설치한 장비의 S/N 폴더와 해당 설치 리포트를 SD Biosensor FSE팀 담당자에게 반드시 송부해주시기 바랍니다.</p>
-            </div>
+      <!-- 버전 확인 -->
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="버전 확인">버전 확인</option>
+        </select>
+        <h3 class="subsection-title">시간 설정</h3>
+        <div class="description">
+          <p>현재 국가의 표준시간으로 설정되어 있는지 확인 하십시오.</p>
+          <p class="check-path">
+            확인 경로: [Settings] ► [General] ► [Time] UTC, 날짜, 시간 설정
+          </p>
         </div>
+        <div class="form-group">
+          <label for="versionPhotoUpload">사진 등록하기</label>
+          <div class="photo-upload-area" id="versionPhotoUploadArea">
+            <svg
+              class="photo-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="2"
+                stroke="#999"
+                stroke-width="2"
+              />
+              <path
+                d="M9 9C9.55228 9 10 9.44772 10 10C10 10.5523 9.55228 11 9 11C8.44772 11 8 10.5523 8 10C8 9.44772 8.44772 9 9 9Z"
+                fill="#999"
+              />
+              <path
+                d="M21 15L16 10L11 15L7 11L3 15V19H21V15Z"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="photo-text">사진 등록하기</span>
+            <input
+              type="file"
+              id="versionPhotoUpload"
+              name="versionPhotoUpload"
+              accept="image/*"
+              style="display: none"
+            />
+          </div>
+        </div>
+      </div>
 
-        <!-- System Detection 데이터 -->
-        <div class="section">
-            <h2 class="section-title">System Detection 데이터</h2>
-            <div class="form-group">
-                <label for="systemDetectionFile">Select file</label>
-                <div class="file-upload-area" id="systemDetectionFileArea">
-                    <svg class="file-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4 7V5C4 3.89543 4.89543 3 6 3H18C19.1046 3 20 3.89543 20 5V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V17" stroke="#999" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M8 12L12 8M12 8L16 12M12 8V16" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="file-text">Select file</span>
-                    <input type="file" id="systemDetectionFile" name="systemDetectionFile" style="display: none;">
-                </div>
-            </div>
+      <!-- S/R Probe 확인사항 -->
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="S/R Probe 확인사항">S/R Probe 확인사항</option>
+        </select>
+        <h3 class="subsection-title">S/R Probe 분주 위치 및 높이 확인</h3>
+        <div class="description">
+          <p>
+            I1000 : S/R Probe Debugging을 진행하여 S/R Probe 분주 위치(X2Y7 /
+            X2Y8)의 Position과 높이(Height)를 확인해 주십시오.
+          </p>
         </div>
+        <div class="checkbox-group checkbox-group-three">
+          <label class="checkbox-label checkbox-pass">
+            <input type="radio" name="probeStatus" value="pass" />
+            <span class="checkbox-text">PASS</span>
+          </label>
+          <label class="checkbox-label checkbox-fail">
+            <input type="radio" name="probeStatus" value="fail" />
+            <span class="checkbox-text">FAIL</span>
+          </label>
+          <label class="checkbox-label checkbox-na">
+            <input type="radio" name="probeStatus" value="na" checked />
+            <span class="checkbox-text">N/A</span>
+          </label>
+        </div>
+      </div>
 
-        <!-- 비고 -->
-        <div class="section">
-            <h2 class="section-title">비고</h2>
+      <!-- 시스템 점검 -->
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="시스템 점검">시스템 점검</option>
+        </select>
+        <h3 class="subsection-title">Liquid Level Detection</h3>
+        <div class="reference-range">
+          <span class="range-label">기준범위</span> : (R) ≤ 0.5
         </div>
+        <div class="form-group measurement-group">
+          <label class="measurement-label">측정 값</label>
+          <input
+            type="text"
+            id="liquidLevelValue"
+            name="liquidLevelValue"
+            class="measurement-input"
+          />
+        </div>
+        <div class="result-section">
+          <label class="result-label">결과</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label checkbox-pass">
+              <input
+                type="radio"
+                name="liquidLevelResult"
+                value="pass"
+                checked
+              />
+              <span class="checkbox-text">PASS</span>
+            </label>
+            <label class="checkbox-label checkbox-fail">
+              <input type="radio" name="liquidLevelResult" value="fail" />
+              <span class="checkbox-text">FAIL</span>
+            </label>
+          </div>
+        </div>
+      </div>
 
-        <!-- 체크사항 -->
-        <div class="section">
-            <h2 class="section-title">체크사항</h2>
-            <div class="checklist-items">
-                <div class="checklist-item">
-                    <label class="checklist-label">
-                        <input type="checkbox" name="checklist" value="1" checked>
-                        <span>구동부 불량 방지를 위한 Pulley Screw 6 EA 록타이트 적용 확인 완료</span>
-                    </label>
-                </div>
-                <div class="checklist-item">
-                    <label class="checklist-label">
-                        <input type="checkbox" name="checklist" value="2" checked>
-                        <span>구동부 불량 방지를 위한 Transfer Timing Belt Tension 및 Rotary Timing Belt Tension 확인 시, 이상 없음 확인</span>
-                    </label>
-                </div>
-                <div class="checklist-item">
-                    <label class="checklist-label">
-                        <input type="checkbox" name="checklist" value="3" checked>
-                        <span>구동부 불량 방지를 위한 Transfer Pulley Holder(구형) 확인 시, 크랙 확인 및 교체 완료</span>
-                    </label>
-                </div>
-                <div class="checklist-item">
-                    <label class="checklist-label">
-                        <input type="checkbox" name="checklist" value="4" checked>
-                        <span>스트립 디바이스 걸림 현상 방지를 위한 Strip Transfer Sensor PCB 확인 시, 이상 없음 확인</span>
-                    </label>
-                </div>
-                <div class="checklist-item">
-                    <label class="checklist-label">
-                        <input type="checkbox" name="checklist" value="5">
-                        <span>광학 성능 유지를 위해 광학모듈 클리닝(클리닝 모드) 진행 완료</span>
-                    </label>
-                </div>
-                <div class="checklist-item">
-                    <label class="checklist-label">
-                        <input type="checkbox" name="checklist" value="6">
-                        <span>기기 내부 및 외부 오염 클리닝 완료</span>
-                    </label>
-                </div>
-                <div class="checklist-item">
-                    <label class="checklist-label">
-                        <input type="checkbox" name="checklist" value="7">
-                        <span>기능검사 및 Calibration Test 결과 적합 확인 완료</span>
-                    </label>
-                </div>
-                <div class="checklist-item">
-                    <label class="checklist-label">
-                        <input type="checkbox" name="checklist" value="8">
-                        <span>S/W V001.048.005 최신 버전 업데이트 완료</span>
-                    </label>
-                </div>
-                <div class="checklist-item">
-                    <label class="checklist-label">
-                        <input type="checkbox" name="checklist" value="9">
-                        <span>데이터 확보를 위한 DB 백업 완료</span>
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <textarea id="checklistNotes" name="checklistNotes" rows="4" class="checklist-textarea" placeholder=""></textarea>
-            </div>
+      <!-- 최종 확인 -->
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="최종 확인">최종 확인</option>
+        </select>
+        <h3 class="subsection-title">System Detection 데이터 추출</h3>
+        <div class="description">
+          <p>
+            System Detection이 완료 되면, FAT-32 형식의 USB 내 [SH] [Dianosis]
+            폴더 경로를 생성합니다. 해당 USB를 장비에 연결하여 System Detection
+            데이터를 추출합니다.
+          </p>
+          <p class="data-storage-method">※ 데이터 저장 방법:</p>
+          <p class="check-path">
+            USB 연결 ▶ [Maint] ▶ [Common] ▶ [System Detection] ▶ [Result] ▶ 날짜
+            확인 후 [Export] 선택
+          </p>
+          <p>
+            USB 내, [Dianosis] 폴더에 설치한 장비의 S/N 폴더와 해당 설치
+            리포트를 SD Biosensor FSE팀 담당자에게 반드시 송부해주시기 바랍니다.
+          </p>
         </div>
+      </div>
 
-        <!-- 특이사항 -->
-        <div class="section">
-            <h2 class="section-title">특이사항</h2>
-            <div class="form-group">
-                <input type="text" id="specialNotes" name="specialNotes" value="고객이 소프트웨어 버젼 유지 요청" class="special-notes-input">
-            </div>
+      <!-- System Detection 데이터 -->
+      <div class="section">
+        <h2 class="section-title">System Detection 데이터</h2>
+        <div class="form-group">
+          <label for="systemDetectionFile">Select file</label>
+          <div class="file-upload-area" id="systemDetectionFileArea">
+            <svg
+              class="file-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 7V5C4 3.89543 4.89543 3 6 3H18C19.1046 3 20 3.89543 20 5V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V17"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M8 12L12 8M12 8L16 12M12 8V16"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="file-text">Select file</span>
+            <input
+              type="file"
+              id="systemDetectionFile"
+              name="systemDetectionFile"
+              style="display: none"
+            />
+          </div>
         </div>
+      </div>
 
-        <!-- 사진 등록 -->
-        <div class="section">
-            <div class="form-group">
-                <label for="finalPhotoUpload">사진 등록하기</label>
-                <div class="photo-upload-area" id="finalPhotoUploadArea">
-                    <svg class="photo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="#999" stroke-width="2"/>
-                        <path d="M9 9C9.55228 9 10 9.44772 10 10C10 10.5523 9.55228 11 9 11C8.44772 11 8 10.5523 8 10C8 9.44772 8.44772 9 9 9Z" fill="#999"/>
-                        <path d="M21 15L16 10L11 15L7 11L3 15V19H21V15Z" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="photo-text">사진 등록하기</span>
-                    <input type="file" id="finalPhotoUpload" name="finalPhotoUpload" accept="image/*" style="display: none;">
-                </div>
-            </div>
-        </div>
+      <!-- 비고 -->
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="비고">비고</option>
+        </select>
+      </div>
 
-        <!-- 결론 -->
-        <div class="section">
-            <h2 class="section-title">결론</h2>
-            <div class="description">
-                <p>위와 같은 확인 작업 및 시스템 점검 결과를 바탕으로, 해당 분석기의 적격성 평가(IQ/OQ/PQ)는 성공적으로 완료되었으며, 이를 통해 최적화된 성능이 입증되었습니다. 이는 시스템의 신뢰성, 효율성을 보장하며, 궁극적으로 장기적인 안정성 확보를 입증할 수 있습니다.</p>
-            </div>
+      <!-- 체크사항 -->
+      <div class="section">
+        <h2 class="section-title">체크사항</h2>
+        <div class="checklist-items">
+          <div class="checklist-item">
+            <label class="checklist-label">
+              <input type="checkbox" name="checklist" value="1" checked />
+              <span
+                >구동부 불량 방지를 위한 Pulley Screw 6 EA 록타이트 적용 확인
+                완료</span
+              >
+            </label>
+          </div>
+          <div class="checklist-item">
+            <label class="checklist-label">
+              <input type="checkbox" name="checklist" value="2" checked />
+              <span
+                >구동부 불량 방지를 위한 Transfer Timing Belt Tension 및 Rotary
+                Timing Belt Tension 확인 시, 이상 없음 확인</span
+              >
+            </label>
+          </div>
+          <div class="checklist-item">
+            <label class="checklist-label">
+              <input type="checkbox" name="checklist" value="3" checked />
+              <span
+                >구동부 불량 방지를 위한 Transfer Pulley Holder(구형) 확인 시,
+                크랙 확인 및 교체 완료</span
+              >
+            </label>
+          </div>
+          <div class="checklist-item">
+            <label class="checklist-label">
+              <input type="checkbox" name="checklist" value="4" checked />
+              <span
+                >스트립 디바이스 걸림 현상 방지를 위한 Strip Transfer Sensor PCB
+                확인 시, 이상 없음 확인</span
+              >
+            </label>
+          </div>
+          <div class="checklist-item">
+            <label class="checklist-label">
+              <input type="checkbox" name="checklist" value="5" />
+              <span
+                >광학 성능 유지를 위해 광학모듈 클리닝(클리닝 모드) 진행
+                완료</span
+              >
+            </label>
+          </div>
+          <div class="checklist-item">
+            <label class="checklist-label">
+              <input type="checkbox" name="checklist" value="6" />
+              <span>기기 내부 및 외부 오염 클리닝 완료</span>
+            </label>
+          </div>
+          <div class="checklist-item">
+            <label class="checklist-label">
+              <input type="checkbox" name="checklist" value="7" />
+              <span>기능검사 및 Calibration Test 결과 적합 확인 완료</span>
+            </label>
+          </div>
+          <div class="checklist-item">
+            <label class="checklist-label">
+              <input type="checkbox" name="checklist" value="8" />
+              <span>S/W V001.048.005 최신 버전 업데이트 완료</span>
+            </label>
+          </div>
+          <div class="checklist-item">
+            <label class="checklist-label">
+              <input type="checkbox" name="checklist" value="9" />
+              <span>데이터 확보를 위한 DB 백업 완료</span>
+            </label>
+          </div>
         </div>
+        <div class="form-group">
+          <textarea
+            id="checklistNotes"
+            name="checklistNotes"
+            rows="4"
+            class="checklist-textarea"
+            placeholder=""
+          ></textarea>
+        </div>
+      </div>
 
-        <!-- 하단 버튼 -->
-        <div class="action-buttons">
-            <button type="button" class="action-btn action-btn-list">List</button>
-            <button type="button" class="action-btn action-btn-reception">Reception</button>
-            <button type="button" class="action-btn action-btn-report">Report</button>
+      <!-- 특이사항 -->
+      <div class="section">
+        <h2 class="section-title">특이사항</h2>
+        <div class="form-group">
+          <input
+            type="text"
+            id="specialNotes"
+            name="specialNotes"
+            value="고객이 소프트웨어 버젼 유지 요청"
+            class="special-notes-input"
+          />
         </div>
+      </div>
+
+      <!-- 사진 등록 -->
+      <div class="section">
+        <div class="form-group">
+          <label for="finalPhotoUpload">사진 등록하기</label>
+          <div class="photo-upload-area" id="finalPhotoUploadArea">
+            <svg
+              class="photo-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="2"
+                stroke="#999"
+                stroke-width="2"
+              />
+              <path
+                d="M9 9C9.55228 9 10 9.44772 10 10C10 10.5523 9.55228 11 9 11C8.44772 11 8 10.5523 8 10C8 9.44772 8.44772 9 9 9Z"
+                fill="#999"
+              />
+              <path
+                d="M21 15L16 10L11 15L7 11L3 15V19H21V15Z"
+                stroke="#999"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="photo-text">사진 등록하기</span>
+            <input
+              type="file"
+              id="finalPhotoUpload"
+              name="finalPhotoUpload"
+              accept="image/*"
+              style="display: none"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 결론 -->
+      <div class="section">
+        <select class="section-title section-title-select">
+          <option value="결론">결론</option>
+        </select>
+        <div class="description">
+          <p>
+            위와 같은 확인 작업 및 시스템 점검 결과를 바탕으로, 해당 분석기의
+            적격성 평가(IQ/OQ/PQ)는 성공적으로 완료되었으며, 이를 통해 최적화된
+            성능이 입증되었습니다. 이는 시스템의 신뢰성, 효율성을 보장하며,
+            궁극적으로 장기적인 안정성 확보를 입증할 수 있습니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 하단 버튼 -->
+      <div class="action-buttons">
+        <button type="button" class="action-btn action-btn-list">List</button>
+        <button type="button" class="action-btn action-btn-reception">
+          Reception
+        </button>
+        <button type="button" class="action-btn action-btn-report">
+          Report
+        </button>
+      </div>
     </div>
-
-</body>
+  </body>
 </html>
