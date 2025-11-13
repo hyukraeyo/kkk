@@ -188,7 +188,7 @@
           <p>장비 뒷면에 있는 시리얼번호(S/N)가 표시된 사진을 첨부하세요.</p>
         </div>
 
-        <div class="form-group">
+        <div class="form-group form-group-photo">
           <label for="photoUpload">사진 등록하기</label>
           <div class="photo-upload-area" id="photoUploadArea">
             <svg
@@ -228,10 +228,6 @@
             />
           </div>
         </div>
-      </div>
-
-      <!-- 날짜 정보 -->
-      <div class="section">
         <div class="form-group">
           <label for="manufacturingDate">제조일자</label>
           <div class="date-input-wrapper">
@@ -494,7 +490,7 @@
 
       <!-- 사진 등록 -->
       <div class="section">
-        <div class="form-group">
+        <div class="form-group form-group-photo">
           <label for="statusPhotoUpload">사진 등록하기</label>
           <div class="photo-upload-area" id="statusPhotoUploadArea">
             <svg
@@ -572,7 +568,7 @@
             확인 경로: [Settings] ► [General] ► [Time] UTC, 날짜, 시간 설정
           </p>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-photo">
           <label for="versionPhotoUpload">사진 등록하기</label>
           <div class="photo-upload-area" id="versionPhotoUploadArea">
             <svg
@@ -652,7 +648,7 @@
           <span class="range-label">기준범위</span> : (R) ≤ 0.5
         </div>
         <div class="form-group measurement-group">
-          <label class="measurement-label">측정 값</label>
+          <label>측정 값</label>
           <input
             type="text"
             id="liquidLevelValue"
@@ -822,7 +818,8 @@
             </label>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-textarea">
+          <label for="checklistNotes">추가 메모</label>
           <textarea
             id="checklistNotes"
             name="checklistNotes"
@@ -837,6 +834,7 @@
       <div class="section">
         <h2 class="section-title">특이사항</h2>
         <div class="form-group">
+          <label for="specialNotes">특이사항</label>
           <input
             type="text"
             id="specialNotes"
@@ -845,11 +843,7 @@
             class="special-notes-input"
           />
         </div>
-      </div>
-
-      <!-- 사진 등록 -->
-      <div class="section">
-        <div class="form-group">
+        <div class="form-group form-group-photo">
           <label for="finalPhotoUpload">사진 등록하기</label>
           <div class="photo-upload-area" id="finalPhotoUploadArea">
             <svg
